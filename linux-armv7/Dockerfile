@@ -10,3 +10,4 @@ RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  meshblu-connector-installer-debian'
 
 RUN [ "cross-build-end" ]
+ENTRYPOINT [ "/usr/bin/qemu-arm-static", "/usr/bin/env", "QEMU_EXECVE=1" ]
