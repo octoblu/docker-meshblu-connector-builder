@@ -2,6 +2,8 @@ FROM octoblu/meshblu-connector-builder-base:linux-armv7
 
 RUN [ "cross-build-start" ]
 
+ENV DEBUG meshblu-connector-*
+
 RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  node-gyp \
  node-pre-gyp \
