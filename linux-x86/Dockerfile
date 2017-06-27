@@ -1,5 +1,7 @@
 FROM octoblu/meshblu-connector-builder-base:linux-x86
 
+COPY upload-deb-s3 /usr/local/bin/upload-deb-s3
+
 ENV DEBUG meshblu-connector-*
 
 RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
