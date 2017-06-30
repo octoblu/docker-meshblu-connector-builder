@@ -5,7 +5,7 @@ COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
 
 COPY upload-deb-s3 /usr/local/bin/upload-deb-s3
 
-ENV DEBUG meshblu-connector-*
+ENV DEBUG meshblu-connector-*,octodash
 
 RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  node-gyp \
