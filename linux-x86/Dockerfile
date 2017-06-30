@@ -1,5 +1,8 @@
 FROM octoblu/meshblu-connector-builder-base:linux-x86
 
+RUN mkdir -p /usr/share/meshblu-sign
+COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
+
 COPY upload-deb-s3 /usr/local/bin/upload-deb-s3
 
 ENV DEBUG meshblu-connector-*

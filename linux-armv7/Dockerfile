@@ -1,5 +1,8 @@
 FROM octoblu/meshblu-connector-builder-base:linux-armv7
 
+RUN mkdir -p /usr/share/meshblu-sign
+COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
+
 COPY upload-deb-s3 /usr/local/bin/upload-deb-s3
 
 RUN [ "cross-build-start" ]

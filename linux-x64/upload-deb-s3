@@ -1,5 +1,8 @@
 #!/bin/bash
 
+openssl aes-256-cbc -pass pass:${MESHBLU_CONNECTOR_ENCRYPTION_PASSWORD} -in /usr/share/meshblu-sign/key.gpg.enc -out /usr/share/meshblu-sign/key.gpg -d
+gpg --import /usr/share/meshblu-sign/key.gpg
+
 for file in $(ls deploy/*/installers/*.deb); do
-  deb-s3 upload --sign --cache-control 'max-age=360' --prefix apt --bucket meshblu-connector $file
+  deb-s3 upload --sign --gpg-options="--no-tty --passphrase ${MESHBLU_CONNECTOR_CERT_PASSWORD}" --cache-control 'max-age=360' --prefix apt --bucket meshblu-connector $file
 done
