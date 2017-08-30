@@ -15,6 +15,6 @@ RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
   meshblu-connector-installer-debian && \
   yarn global add "pkg-fetch@$(meshblu-connector-pkger --pkg-fetch-version)"'
 
-RUN /bin/bash -c 'pkg-fetch -n node8.3.0 -p linux -a x64'
+RUN /bin/bash -c 'env HOME=/tmp/cache pkg-fetch -n node8.3.0 -p linux -a x64'
 
 ENV DEBUG meshblu-connector-*,octodash

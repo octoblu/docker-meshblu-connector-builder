@@ -1,7 +1,5 @@
 FROM octoblu/meshblu-connector-builder-base:linux-armv7
 
-RUN [ "cross-build-start" ]
-
 RUN mkdir -p /usr/share/meshblu-sign
 COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
 
@@ -17,10 +15,7 @@ RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  meshblu-connector-installer-debian && \
  yarn global add "pkg-fetch@$(meshblu-connector-pkger --pkg-fetch-version)"'
 
-RUN /bin/bash -c 'pkg-fetch -n node8.3.0 -p linux -a armv6 -b true \
+RUN /bin/bash -c 'env HOME=/tmp/cache pkg-fetch -n node8.3.0 -p linux -a armv6 -b true \
   && mv $PKG_CACHE_PATH/$(meshblu-connector-pkger --pkg-fetch-version)/built-v8.3.0-linux-arm{v6,v7}'
 
 ENV DEBUG meshblu-connector-*,octodash
-
-RUN [ "cross-build-end" ]
-ENTRYPOINT [ "/usr/bin/qemu-arm-static", "/usr/bin/env", "QEMU_EXECVE=1" ]
