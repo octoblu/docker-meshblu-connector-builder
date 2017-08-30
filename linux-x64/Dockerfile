@@ -5,6 +5,8 @@ COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
 
 COPY upload-deb-s3 /usr/local/bin/upload-deb-s3
 
+ENV PKG_CACHE_PATH /root/.pkg-cache
+
 RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
   node-gyp \
   node-pre-gyp \
