@@ -1,4 +1,4 @@
-FROM octoblu/meshblu-connector-builder-base:linux-armv7
+FROM octoblu/meshblu-connector-builder-base:linux-armv7-node-v8.1.0
 
 RUN [ "cross-build-start" ]
 
@@ -12,7 +12,7 @@ ENV DEBUG meshblu-connector-*,octodash
 RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  node-gyp \
  node-pre-gyp \
- meshblu-connector-pkger \
+ meshblu-connector-pkger@1.7.6 \
  meshblu-connector-uploader-github \
  meshblu-connector-installer-debian'
 
