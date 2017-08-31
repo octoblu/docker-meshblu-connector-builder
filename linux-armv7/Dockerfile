@@ -1,5 +1,7 @@
 FROM octoblu/meshblu-connector-builder-base:linux-armv7
 
+RUN [ "cross-build-start" ]
+
 RUN mkdir -p /usr/share/meshblu-sign
 COPY key.gpg.enc /usr/share/meshblu-sign/key.gpg.enc
 
@@ -20,3 +22,6 @@ RUN /bin/bash -c 'mkdir -p $PKG_CACHE_PATH/v2.3 && \
   -o $PKG_CACHE_PATH/v2.3/built-v8.3.0-linux-armv7'
 
 ENV DEBUG meshblu-connector-*,octodash
+
+RUN [ "cross-build-end" ]
+ENTRYPOINT [ "/usr/bin/qemu-arm-static", "/usr/bin/env", "QEMU_EXECVE=1" ]
