@@ -15,7 +15,8 @@ RUN /bin/bash -c 'env HOME=/tmp/cache yarn global add \
  meshblu-connector-installer-debian && \
  yarn global add "pkg-fetch@$(meshblu-connector-pkger --pkg-fetch-version)"'
 
-RUN /bin/bash -c 'env HOME=/tmp/cache pkg-fetch -n node8.3.0 -p linux -a armv6 -b true \
-  && mv $PKG_CACHE_PATH/$(meshblu-connector-pkger --pkg-fetch-version)/built-v8.3.0-linux-arm{v6,v7}'
+RUN /bin/bash -c 'mkdir -p $PKG_CACHE_PATH/v2.3 && \
+  curl -sfL https://s3-us-west-2.amazonaws.com/meshblu-connector/pkg/v2.3/built-v8.3.0-linux-armv7 \
+  -o $PKG_CACHE_PATH/v2.3/built-v8.3.0-linux-armv7'
 
 ENV DEBUG meshblu-connector-*,octodash
