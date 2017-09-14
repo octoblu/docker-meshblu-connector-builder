@@ -12,7 +12,7 @@ RUN /bin/bash -c 'export HOME=/tmp/cache && yarn global add \
   node-pre-gyp \
   meshblu-connector-pkger@^1.10.0 \
   meshblu-connector-uploader-github \
-  meshblu-connector-installer-debian && \
+  meshblu-connector-installer-debian@1.6.0 && \
   yarn global add "pkg-fetch@$(meshblu-connector-pkger --pkg-fetch-version)"'
 
 RUN /bin/bash -c 'export HOME=/tmp/cache && pkg-fetch -n node8.3.0 -p linux -a x64'
