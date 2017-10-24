@@ -14,7 +14,7 @@ RUN /bin/bash -c 'export HOME=/tmp/cache && yarn global add \
  node-pre-gyp \
  meshblu-connector-pkger@^1.10.1 \
  meshblu-connector-uploader-github \
- meshblu-connector-installer-debian@1.6.1 && \
+ meshblu-connector-installer-debian@^2.0.0 && \
  yarn global add "pkg-fetch@$(meshblu-connector-pkger --pkg-fetch-version)"'
 
 RUN /bin/bash -c 'mkdir -p $PKG_CACHE_PATH/v2.3 && \
